@@ -1,4 +1,4 @@
 export function hello() {
-  const a = 'Hello World';
+  const a = "Hello World";
   return a;
 }
