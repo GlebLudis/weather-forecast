@@ -1,5 +1,5 @@
 import {hello} from "./hello"
 
 it("test", () => {
-    expect(test).toBeInstanceOf(String)
+    expect(hello()).toBe('Hello World')
 })
