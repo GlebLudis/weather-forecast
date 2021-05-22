@@ -2,9 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <style rel="stylesheet" src="style.css" type="text/css"></style>
+    <script type="module" src="./src/index.js"></script>
   </head>
   <body>
-    <h1>Webpack is used</h1>
-    <script type="module" src="./src/index.js"></script>
+    <h1>Weather Forecast</h1>
+    <form>
+      <input type="text" placeholder="Type your city" autofocus />
+      <button type="submit">Submit</button>
+      <span class="message"></span>
+    </form>
+    <div class="container">
+      <ul class="cities"></ul>
+    </div>
   </body>
 </html>

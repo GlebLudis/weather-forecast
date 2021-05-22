@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
+    filename: "script.js",
     path: path.resolve(__dirname, "dist"),
-    filename: "hello.js",
     environment: {
       arrowFunction: false,
     },
@@ -19,13 +19,17 @@ module.exports = {
     rules: [
       {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", { targets: "ie 11" }],
+            presets: [["@babel/preset-env", { targets: "ie 11" }]],
           },
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
