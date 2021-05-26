@@ -11,6 +11,7 @@ module.exports = {
   },
   rules: {
     "import/prefer-default-export": "off",
+    "import/extensions": ["error", "always", { ignorePackages: true }],
     "no-use-before-define": ["error", { functions: false }],
     "no-unused-vars": "off",
     "max-len": ["error", { ignoreComments: true, code: 120 }],

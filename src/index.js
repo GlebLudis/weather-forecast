@@ -1,4 +1,4 @@
-import { submitForm } from "./submit_form";
-import "./app";
+import { submitForm } from "./submit_form.js";
+import "./app.js";
 // import "./submit_form.js"
 submitForm();
