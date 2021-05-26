@@ -11,7 +11,11 @@ module.exports = {
   },
   rules: {
     "import/prefer-default-export": "off",
-    "max-len": ["error", { ignoreComments: true }],
+    "no-use-before-define": ["error", { functions: false }],
+    "no-unused-vars": "off",
+    "max-len": ["error", { ignoreComments: true, code: 120 }],
+    "no-alert": "off",
+    "no-console": "off",
   },
   plugins: ["jest"],
 };

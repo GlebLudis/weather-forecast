@@ -2,18 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <style rel="stylesheet" src="style.css" type="text/css"></style>
     <script type="module" src="./src/index.js"></script>
   </head>
   <body>
     <h1>Weather Forecast</h1>
+    <div class="map"></div>
     <form>
-      <input type="text" placeholder="Type your city" autofocus />
+      <input type="text" placeholder="Type your city" required autofocus />
       <button type="submit">Submit</button>
       <span class="message"></span>
     </form>
-    <div class="container">
-      <ul class="cities"></ul>
-    </div>
+    <div class="weather-form"></div>
+    <div class="message"></div>
+    <div class="cities"></div>
   </body>
 </html>
