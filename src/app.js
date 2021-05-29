@@ -35,6 +35,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
         `;
 
+  const le = localStorage.getItem("Cities");
+  if (le == null) {
+    console.log(le);
+    const newData = [];
+    const cityStr = JSON.stringify(name);
+    const newCity = cityStr.split('"').join("");
+    newData.push(newCity);
+    localStorage.setItem("Cities", JSON.stringify(newData));
+  }
+
   weatherForm.insertAdjacentHTML("beforeend", markup);
   map.insertAdjacentHTML("beforeend", image);
 });
