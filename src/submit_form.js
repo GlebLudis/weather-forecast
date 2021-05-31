@@ -40,7 +40,7 @@ function submitForm() {
 
         const oldData = localStorage.getItem("Cities");
         const parseData = JSON.parse(oldData);
-        if (parseData.length > 2) {
+        if (parseData.length > 3) {
           parseData.splice(0, 1);
         }
 
@@ -54,6 +54,16 @@ function submitForm() {
           parseData.push(newStrCity);
           localStorage.setItem("Cities", JSON.stringify(parseData));
         }
+
+        console.log(parseData);
+        let str = "";
+
+        parseData.forEach((cities) => {
+          str += `<option value="${  cities  }" />`;
+        });
+
+        const dataList = document.getElementById("data-list");
+        dataList.innerHTML = str;
       });
 
     form.reset();
