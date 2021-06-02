@@ -1,19 +1,9 @@
-const getCity = async () => {
-  const response = await fetch("https://ipapi.co/json/");
-  const data = await response.json();
-  const { city } = data;
-  return city;
-};
-
-const getWeather = async () => {
-  const apiKey = "20a60a7e129c650ce2044325518adef8";
-  const city = await getCity();
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  const response = await fetch(url);
-  return response.json();
-};
+import getCity from "./getCity.js";
+import getWeather from "./weather.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const responseCity = await getCity();
+  const responseWeather = await getWeather();
   const data = await getWeather();
   const { main, name, weather } = data;
   const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
@@ -57,5 +47,3 @@ document.addEventListener("DOMContentLoaded", async () => {
   weatherForm.insertAdjacentHTML("beforeend", markup);
   map.insertAdjacentHTML("beforeend", image);
 });
-
-export { getCity, getWeather };
