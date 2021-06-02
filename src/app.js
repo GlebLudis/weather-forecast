@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const oldData = localStorage.getItem("Cities");
     const parseData = JSON.parse(oldData);
     parseData.forEach((cities) => {
-      str += `<option value="${  cities  }" />`;
+      str += `<option value="${cities}" />`;
     });
 
     const dataList = document.getElementById("data-list");
@@ -57,3 +57,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   weatherForm.insertAdjacentHTML("beforeend", markup);
   map.insertAdjacentHTML("beforeend", image);
 });
+
+export { getCity, getWeather };
