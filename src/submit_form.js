@@ -1,4 +1,4 @@
-function submitForm() {
+async function submitForm() {
   const input = document.querySelector("input");
   const form = document.querySelector("form");
   const apiKey = "20a60a7e129c650ce2044325518adef8";
@@ -59,7 +59,7 @@ function submitForm() {
         let str = "";
 
         parseData.forEach((cities) => {
-          str += `<option value="${  cities  }" />`;
+          str += `<option value="${cities}" />`;
         });
 
         const dataList = document.getElementById("data-list");
@@ -71,4 +71,4 @@ function submitForm() {
   });
 }
 
-export { submitForm };
+export default submitForm;

@@ -1,21 +1,22 @@
-import getCity from "./getCity.js";
+import submitForm from "./submit_form.js";
 import getWeather from "./weather.js";
+import storage from "./storage.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const responseCity = await getCity();
-  const responseWeather = await getWeather();
   const data = await getWeather();
   const { main, name, weather } = data;
   const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
 
-  const map = document.querySelector(".map");
-  const weatherForm = document.querySelector(".weather-form");
-  const image = `<img 
+  document.querySelector(".map").innerHTML = "";
+  document.querySelector(".weather-form").innerHTML = "";
+  const map = document.createElement("div");
+  const weatherForm = document.createElement("div");
+  map.innerHTML = `<img 
     src=https://open.mapquestapi.com/staticmap/v5/map?key=${newKey}&center=${name}&size=200,200@2x
         width="200" height="200">`;
   const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
 
-  const markup = `
+  weatherForm.innerHTML = `
          <h2 class="city-name" data-name="${name}">
          <span>${name}</span>
          </h2>
@@ -24,26 +25,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           <figcaption>${weather[0].description}</figcaption>
         </div>
         `;
-
-  const checkData = localStorage.getItem("Cities");
-  if (checkData == null) {
-    const newData = [];
-    const cityStr = JSON.stringify(name);
-    const newCity = cityStr.split('"').join("");
-    newData.push(newCity);
-    localStorage.setItem("Cities", JSON.stringify(newData));
-  } else {
-    let str = "";
-    const oldData = localStorage.getItem("Cities");
-    const parseData = JSON.parse(oldData);
-    parseData.forEach((cities) => {
-      str += `<option value="${cities}" />`;
-    });
-
-    const dataList = document.getElementById("data-list");
-    dataList.innerHTML = str;
-  }
-
-  weatherForm.insertAdjacentHTML("beforeend", markup);
-  map.insertAdjacentHTML("beforeend", image);
+  document.querySelector(".map").appendChild(map);
+  document.querySelector(".weather-form").appendChild(weatherForm);
 });
+
+storage();
+submitForm();
