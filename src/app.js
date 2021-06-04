@@ -1,7 +1,7 @@
 import firstRequest from "./firstRequest.js";
 import getWeather from "./getWeather.js";
 import storage from "./storage.js";
-import weatherFromInput from "./gettingWeather.js";
+import userWeather from "./userWeather.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const firstReq = await firstRequest();
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 document.addEventListener("submit", async (ev) => {
   ev.preventDefault();
-  const showWeather = await weatherFromInput();
+  const showWeather = await userWeather();
   return showWeather;
 });
 

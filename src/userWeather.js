@@ -1,4 +1,4 @@
-async function weatherFromInput() {
+async function userWeather() {
   const form = document.querySelector("form");
   const input = document.querySelector("input");
   const inputVal = input.value;
@@ -68,4 +68,4 @@ async function weatherFromInput() {
   input.focus();
 }
 
-export default weatherFromInput;
+export default userWeather;
