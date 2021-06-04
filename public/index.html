@@ -8,10 +8,17 @@
     <h1>Weather Forecast</h1>
     <div class="map"></div>
     <form>
-        <label>
-            <input type="text" placeholder="Type your city" list ="data-list" autocomplete="off" required autofocus />
-        </label>
-        <datalist id="data-list"></datalist>
+      <label>
+        <input id="text"
+          type="text"
+          placeholder="Type your city"
+          list="data-list"
+          autocomplete="off"
+          required
+          autofocus
+        />
+      </label>
+      <datalist id="data-list"></datalist>
       <button type="submit">Submit</button>
     </form>
     <div class="messages"></div>

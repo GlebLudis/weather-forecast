@@ -1,4 +1,4 @@
-import getWeather from "./weather.js";
+import getWeather from "./getWeather.js";
 
 async function storage() {
   const data = await getWeather();
