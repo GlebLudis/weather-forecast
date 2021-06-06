@@ -4,6 +4,7 @@ async function firstRequest() {
   const data = await getWeather();
   const { main, name, weather } = data;
   const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
+  console.log(data);
 
   document.querySelector(".map").innerHTML = "";
   document.querySelector(".weather-form").innerHTML = "";

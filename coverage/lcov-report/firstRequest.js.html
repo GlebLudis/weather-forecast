@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for storage.js</title>
+    <title>Code coverage report for firstRequest.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> storage.js</h1>
+        <h1><a href="index.html">All files</a> firstRequest.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/26</span>
+                <span class='fraction'>31/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/26</span>
+                <span class='fraction'>31/31</span>
             </div>
         
             
@@ -83,14 +83,12 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -100,41 +98,58 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import getWeather from "./getWeather.js";
 &nbsp;
-async function storage() {
+async function firstRequest() {
   const data = await getWeather();
-  const { name } = data;
-  const checkData = localStorage.getItem("Cities");
-  if (checkData == null) {
-    const newData = [];
-    const cityStr = JSON.stringify(name);
-    const newCity = cityStr.split('"').join("");
-    newData.push(newCity);
-    localStorage.setItem("Cities", JSON.stringify(newData));
-  } else {
-    let str = "";
-    const oldData = localStorage.getItem("Cities");
-    const parseData = JSON.parse(oldData);
-    parseData.forEach((cities) =&gt; {
-      str += `&lt;option value="${cities}" /&gt;`;
+  const { main, name, weather } = data;
+  const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
+  console.log(data)
 &nbsp;
-      const dataList = document.getElementById("data-list");
-      dataList.innerHTML = str;
-    });
-  }
+  document.querySelector(".map").innerHTML = "";
+  document.querySelector(".weather-form").innerHTML = "";
+  const map = document.createElement("div");
+  const weatherForm = document.createElement("div");
+  map.innerHTML = `&lt;img 
+    src=https://open.mapquestapi.com/staticmap/v5/map?key=${newKey}&amp;center=${name}&amp;size=200,200@2x
+        width="200" height="200"&gt;`;
+  const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+&nbsp;
+  weatherForm.innerHTML = `
+         &lt;h2 class="city-name" data-name="${name}"&gt;
+         &lt;span&gt;${name}&lt;/span&gt;
+         &lt;/h2&gt;
+          &lt;div class="city-temp"&gt;${Math.round(main.temp)}&lt;sup&gt;°C&lt;/sup&gt;&lt;/div&gt;
+          &lt;img class="city-icon" src=${icon} alt=${weather[0].main}&gt;
+          &lt;figcaption&gt;${weather[0].description}&lt;/figcaption&gt;
+        &lt;/div&gt;
+        `;
+  document.querySelector(".map").appendChild(map);
+  document.querySelector(".weather-form").appendChild(weatherForm);
 }
 &nbsp;
-export default storage;
+export default firstRequest;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
