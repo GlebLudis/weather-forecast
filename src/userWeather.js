@@ -1,71 +1,68 @@
 async function userWeather() {
+  const input = document.querySelector("input");
+  const city = input.value;
+  const apiKey = "20a60a7e129c650ce2044325518adef8";
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const response = await fetch(url);
+  return response.json();
+}
+
+async function renderWeather() {
   const form = document.querySelector("form");
   const input = document.querySelector("input");
-  const inputVal = input.value;
-  const apiKey = "20a60a7e129c650ce2044325518adef8";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
 
   document.querySelector(".map").innerHTML = "";
   document.querySelector(".weather-form").innerHTML = "";
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      const { main, name, weather } = data;
-      const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
-      const map = document.createElement("div");
-      const weatherForm = document.createElement("div");
-      const li = document.createElement("li");
-      li.classList.add("city");
-      const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+  const data = await userWeather();
+  const { main, name, weather } = data;
+  const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
+  const li = document.createElement("li");
+  li.classList.add("city");
+  const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
 
-      map.innerHTML = `<img 
+  document.querySelector(".map").innerHTML = `<img 
         src=https://open.mapquestapi.com/staticmap/v5/map?key=${newKey}&center=${name}&size400,400px=@2x
         width="200" height="200">`;
 
-      weatherForm.innerHTML = `
+  document.querySelector(".weather-form").innerHTML = `
          <h2 class="city-name" data-name="${name}">
          <span>${name}</span>
          </h2>
           <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
           <img class="city-icon" src=${icon} alt=${weather[0].main}>
-          <figcaption>${weather[0].description}</figcaption>
+          <img>${weather[0].description}</img>
         </div>
         `;
 
-      document.querySelector(".map").appendChild(map);
-      document.querySelector(".weather-form").appendChild(weatherForm);
+  const oldData = localStorage.getItem("Cities");
+  const parseData = JSON.parse(oldData);
+  if (parseData.length > 9) {
+    parseData.splice(0, 1);
+  }
 
-      const oldData = localStorage.getItem("Cities");
-      const parseData = JSON.parse(oldData);
-      if (parseData.length > 9) {
-        parseData.splice(0, 1);
-      }
+  const newCity = JSON.stringify(name);
+  const newStrCity = newCity.split('"').join("");
 
-      const newCity = JSON.stringify(name);
-      const newStrCity = newCity.split('"').join("");
+  const compare = parseData.includes(newStrCity);
+  if (compare === true) {
+    console.error("Ok");
+  } else if (compare === false) {
+    parseData.push(newStrCity);
+    localStorage.setItem("Cities", JSON.stringify(parseData));
+  }
 
-      const compare = parseData.includes(newStrCity);
-      if (compare === true) {
-        console.error("Ok");
-      } else if (compare === false) {
-        parseData.push(newStrCity);
-        localStorage.setItem("Cities", JSON.stringify(parseData));
-      }
+  let str = "";
 
-      console.log(parseData);
-      let str = "";
+  parseData.forEach((cities) => {
+    str += `<option value="${cities}" />`;
+  });
 
-      parseData.forEach((cities) => {
-        str += `<option value="${cities}" />`;
-      });
-
-      const dataList = document.getElementById("data-list");
-      dataList.innerHTML = str;
-    });
+  const dataList = document.getElementById("data-list");
+  dataList.innerHTML = str;
 
   form.reset();
   input.focus();
 }
 
-export default userWeather;
+export { renderWeather, userWeather };

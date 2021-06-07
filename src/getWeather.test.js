@@ -12,8 +12,8 @@ describe("Test first request", () => {
     fetch.mockClear();
   });
 
-  it("getWeather is Function", async () => {
-    await expect(getWeather).toBeInstanceOf(Function);
+  it("getWeather return promise", async () => {
+    await expect(getWeather()).toBeInstanceOf(Promise);
   });
 
   it("response json", async () => {

@@ -33,7 +33,14 @@ describe("Test storage function", () => {
     document.body.innerHTML = `
         <div class="map"></div>
         <div class="weather-form"></div>
-        `;
+        <input id="text"
+          type="text"
+          list="data-list"
+          autocomplete="off"
+          required
+          autofocus
+        />
+       `;
   });
   afterEach(() => {
     fetch.mockClear();
@@ -43,9 +50,11 @@ describe("Test storage function", () => {
     await expect(firstRequest).toBeInstanceOf(Function);
   });
 
-  it("Select elements", async () => {
+  it("Check elements", async () => {
     const map = document.querySelector(".map");
-    const result = await firstRequest();
+    const input = document.querySelector("input");
+
+    await firstRequest();
     expect(map.innerHTML).toBe(
       "<div>" +
         '<img src="https://open.mapquestapi.com/staticmap/v5/' +
