@@ -6,7 +6,7 @@
     <h2 align="center"> Web application to show the current weather forecast.</h2>    
 </p>
 
-![pull_request](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=pull_request)
+![pull_request](https://github.com/GlebLudis/weather-forecast/actions/workflows/sanity-check.yml/badge.svg?event=pull_request)
 
 Weather forecast app using the [Open Weather API](https://openweathermap.org/api) and [Open Static Map API](https://developer.mapquest.com/documentation/open/static-map-api/v4/)
 
