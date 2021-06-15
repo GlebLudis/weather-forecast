@@ -5,8 +5,6 @@ async function firstRequest() {
   const data = await getWeather();
   const { main, name, weather } = data;
 
-  // document.querySelector(".map").innerHTML = "";
-  // document.querySelector(".weather-form").innerHTML = "";
   const map = document.createElement("div");
   const weatherForm = document.createElement("div");
   map.innerHTML = `<img 
