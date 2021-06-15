@@ -7,6 +7,9 @@ global.fetch = jest.fn(() =>
   })
 );
 
+global.onload = jest.fn();
+jest.spyOn(Storage.prototype, "setItem");
+
 describe("Test storage function", () => {
   afterEach(() => {
     fetch.mockClear();
@@ -23,14 +26,6 @@ describe("Test storage function", () => {
 });
 
 describe("save to local storage", () => {
-  beforeEach(() => {
-    jest.spyOn(Storage.prototype, "setItem");
-  });
-
-  afterEach(() => {
-    localStorage.setItem.mockRestore();
-  });
-
   it("If locastorage is null", async () => {
     const result = await storage();
     await expect(localStorage.getItem("Cities")).toBe('["Moscow"]');
@@ -39,14 +34,12 @@ describe("save to local storage", () => {
 
 describe("save to local storage", () => {
   beforeEach(() => {
-    jest.spyOn(Storage.prototype, "setItem");
     const name = "Ufa";
     const newData = ["Moscow", "Kazan"];
     const cityStr = JSON.stringify(name);
     const newCity = cityStr.split('"').join("");
     newData.push(newCity);
     localStorage.setItem("Cities", JSON.stringify(newData));
-    global.onload = jest.fn();
   });
 
   afterEach(() => {

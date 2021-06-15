@@ -11,8 +11,8 @@ describe("Test first request", () => {
     fetch.mockClear();
   });
 
-  it("getCity return promise", async () => {
-    await expect(getCity()).toBeInstanceOf(Promise);
+  it("getCity return promise", () => {
+    expect(getCity()).toBeInstanceOf(Promise);
   });
 
   it("the data is city", async () => {
