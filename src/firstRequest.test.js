@@ -57,7 +57,7 @@ describe("Test storage function", () => {
     expect(map.innerHTML).toBe(
       "<div>" +
         '<img src="https://open.mapquestapi.com/staticmap/v5/' +
-        "map?key=unGTODaBI2fnVlu7XPcaeSj5ndG28d5k&amp;" +
+        "map?key=u4KWD7KSlGqr0XwmW4w0656NGZyJjJcs&amp;" +
         'center=Moscow&amp;size=200,200@2x" width="200" height="200"></div>'
     );
   });
