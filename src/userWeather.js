@@ -1,10 +1,9 @@
-import { API_KEY } from "./keys.js";
+import { API_KEY, API_KEY_WF } from "./keys.js";
 
 async function userWeather() {
   const input = document.querySelector("input");
   const city = input.value;
-  const apiKey = "20a60a7e129c650ce2044325518adef8";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY_WF}&units=metric`;
   const response = await fetch(url);
   return response.json();
 }
