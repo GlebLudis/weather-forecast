@@ -6,20 +6,11 @@ global.fetch = jest.fn(() =>
       Promise.resolve({
         main: {
           temp: 16.1,
-          feels_like: 15.38,
-          temp_min: 14.75,
-          temp_max: 17.24,
-          pressure: 1005,
-          humidity: 62,
-          sea_level: 1005,
-          grnd_level: 987,
         },
         name: "Moscow",
         weather: [
           {
-            id: 502,
             main: "Rain",
-            description: "heavy intensity rain",
             icon: "10d",
           },
         ],
