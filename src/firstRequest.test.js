@@ -45,8 +45,8 @@ describe("Test storage function", () => {
     fetch.mockClear();
   });
 
-  it("is Function", async () => {
-    await expect(firstRequest).toBeInstanceOf(Function);
+  it("is Function", () => {
+    expect(firstRequest).toBeInstanceOf(Function);
   });
 
   it("Check elements", async () => {

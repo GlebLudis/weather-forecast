@@ -15,20 +15,20 @@ describe("Test storage function", () => {
     fetch.mockClear();
   });
 
-  it("is Function", async () => {
-    await expect(storage).toBeInstanceOf(Function);
+  it("is Function", () => {
+    expect(storage).toBeInstanceOf(Function);
   });
 
   it("Await data from getWeather", async () => {
     const data = await getWeather();
-    await expect(data).toEqual({ name: "Moscow" });
+    expect(data).toEqual({ name: "Moscow" });
   });
 });
 
 describe("save to local storage", () => {
   it("If locastorage is null", async () => {
     const result = await storage();
-    await expect(localStorage.getItem("Cities")).toBe('["Moscow"]');
+    expect(localStorage.getItem("Cities")).toBe('["Moscow"]');
   });
 });
 
@@ -53,6 +53,6 @@ describe("save to local storage", () => {
         `;
 
     const result = await storage();
-    await expect(document.querySelector("datalist").children.length).toEqual(3);
+    expect(document.querySelector("datalist").children.length).toEqual(3);
   });
 });

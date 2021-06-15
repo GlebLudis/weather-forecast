@@ -11,12 +11,12 @@ describe("Test first request", () => {
     fetch.mockClear();
   });
 
-  it("getWeather return promise", async () => {
-    await expect(getWeather()).toBeInstanceOf(Promise);
+  it("getWeather return promise", () => {
+    expect(getWeather()).toBeInstanceOf(Promise);
   });
 
   it("response json", async () => {
     const response = await getWeather();
-    await expect(response).toEqual({ statusText: "OK" });
+    expect(response).toEqual({ statusText: "OK" });
   });
 });

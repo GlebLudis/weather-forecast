@@ -17,6 +17,6 @@ describe("Test first request", () => {
 
   it("the data is city", async () => {
     const data = await getCity();
-    await expect(data).toBe("Moscow");
+    expect(data).toBe("Moscow");
   });
 });

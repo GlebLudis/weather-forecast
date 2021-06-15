@@ -58,14 +58,14 @@ describe("Test storage function", () => {
     await renderWeather();
     expect(map.innerHTML).toBe(
       '<img src="https://open.mapquestapi.com/staticmap/v5/' +
-        'map?key=undefined&amp;center=Moscow&amp;size400,400px=@2x" ' +
+        'map?key=u4KWD7KSlGqr0XwmW4w0656NGZyJjJcs&amp;center=Moscow&amp;size400,400px=@2x" ' +
         'width="200" height="200">'
     );
   });
 
   it("locastorage have values 3 after submit", async () => {
     await renderWeather();
-    await expect(document.querySelector("datalist").children.length).toEqual(3);
+    expect(document.querySelector("datalist").children.length).toEqual(3);
   });
 
   it("locastorage have values 10 after submit", async () => {
@@ -84,8 +84,6 @@ describe("Test storage function", () => {
     localStorage.setItem("Cities", JSON.stringify(newData));
 
     await renderWeather();
-    await expect(document.querySelector("datalist").children.length).toEqual(
-      10
-    );
+    expect(document.querySelector("datalist").children.length).toEqual(10);
   });
 });

@@ -1,4 +1,4 @@
-import API_KEY from "./keys.js";
+import { API_KEY } from "./keys.js";
 
 async function userWeather() {
   const input = document.querySelector("input");
