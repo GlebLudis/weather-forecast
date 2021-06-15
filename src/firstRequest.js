@@ -1,4 +1,4 @@
-import API_KEY from "./keys.js";
+import { API_KEY } from "./keys.js";
 import getWeather from "./getWeather.js";
 
 async function firstRequest() {

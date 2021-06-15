@@ -58,7 +58,7 @@ describe("Test storage function", () => {
     await renderWeather();
     expect(map.innerHTML).toBe(
       '<img src="https://open.mapquestapi.com/staticmap/v5/' +
-        'map?key=[object" object]&center="Moscow&amp;size400,400px=@2x" ' +
+        'map?key=undefined&amp;center=Moscow&amp;size400,400px=@2x" ' +
         'width="200" height="200">'
     );
   });
