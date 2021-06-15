@@ -1,3 +1,5 @@
+import API_KEY from "./keys.js";
+
 async function userWeather() {
   const input = document.querySelector("input");
   const city = input.value;
@@ -16,13 +18,12 @@ async function renderWeather() {
 
   const data = await userWeather();
   const { main, name, weather } = data;
-  const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
   const li = document.createElement("li");
   li.classList.add("city");
   const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
 
   document.querySelector(".map").innerHTML = `<img 
-        src=https://open.mapquestapi.com/staticmap/v5/map?key=${newKey}&center=${name}&size400,400px=@2x
+        src=https://open.mapquestapi.com/staticmap/v5/map?key=${API_KEY}&center=${name}&size400,400px=@2x
         width="200" height="200">`;
 
   document.querySelector(".weather-form").innerHTML = `

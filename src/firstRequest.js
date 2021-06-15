@@ -1,16 +1,16 @@
+import API_KEY from "./keys.js";
 import getWeather from "./getWeather.js";
 
 async function firstRequest() {
   const data = await getWeather();
   const { main, name, weather } = data;
-  const newKey = `unGTODaBI2fnVlu7XPcaeSj5ndG28d5k`;
 
-  document.querySelector(".map").innerHTML = "";
-  document.querySelector(".weather-form").innerHTML = "";
+  // document.querySelector(".map").innerHTML = "";
+  // document.querySelector(".weather-form").innerHTML = "";
   const map = document.createElement("div");
   const weatherForm = document.createElement("div");
   map.innerHTML = `<img 
-    src=https://open.mapquestapi.com/staticmap/v5/map?key=${newKey}&center=${name}&size=200,200@2x
+    src=https://open.mapquestapi.com/staticmap/v5/map?key=${API_KEY}&center=${name}&size=200,200@2x
         width="200" height="200">`;
   const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
 
