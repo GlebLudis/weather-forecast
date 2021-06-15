@@ -1,5 +1,4 @@
 import getWeather from "./getWeather.js";
-import getCity from "./getCity.js";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

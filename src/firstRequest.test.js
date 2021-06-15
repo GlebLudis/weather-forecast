@@ -1,5 +1,4 @@
 import firstRequest from "./firstRequest.js";
-import getWeather from "./getWeather.js";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
