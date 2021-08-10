@@ -30,8 +30,8 @@ async function renderWeather() {
          <span>${name}</span>
          </h2>
           <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
-          <img class="city-icon" src=${icon} alt=${weather[0].main}>
-          <img>${weather[0].description}</img>
+          <img class="city-icon" src=${icon} alt="icon">
+          <p>${weather[0].main}</p>
         </div>
         `;
 

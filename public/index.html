@@ -5,25 +5,29 @@
   </head>
   <body>
     <h1>Weather Forecast</h1>
+    <div class="page">
+    <div class="container">
     <div class="map"></div>
-    <form>
-      <label>
-        <input
-          id="text"
-          type="text"
-          placeholder="Type your city"
-          list="data-list"
-          autocomplete="off"
-          required
-          autofocus
-        />
-      </label>
-      <datalist id="data-list"></datalist>
-      <button type="submit">Submit</button>
-    </form>
     <div class="messages"></div>
     <div class="weather-form"></div>
     <div class="list"></div>
+    </div>
+    <form>
+        <label>
+            <input
+                    id="text"
+                    type="text"
+                    placeholder="Type your city"
+                    list="data-list"
+                    autocomplete="off"
+                    required
+                    autofocus
+            />
+        </label>
+        <datalist id="data-list"></datalist>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
     <script type="module" src="./src/index.js"></script>
   </body>
 </html>

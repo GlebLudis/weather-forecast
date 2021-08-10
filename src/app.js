@@ -1,6 +1,7 @@
 import firstRequest from "./firstRequest.js";
 import storage from "./storage.js";
 import { renderWeather } from "./userWeather.js";
+import "./style.css";
 
 const form = document.querySelector("form");
 
