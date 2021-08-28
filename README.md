@@ -13,8 +13,9 @@ Weather forecast app using LocalStorage and the [Open Weather API](https://openw
 
 ## Built With
 
-- HTML
+- HTML, CSS
 - JavaScript
+- Webpack
 
 ## Live Demo
 
