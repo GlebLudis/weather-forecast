@@ -1,7 +1,9 @@
 export abstract class Component<State = {}> {
   state: State | undefined;
   el: HTMLElement;
-  events: Record<string, () => void> = {};
+  events: Record<string, (ev: Event) => void> = {};
+
+
 
   constructor(el: HTMLElement) {
     this.el = el;

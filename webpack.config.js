@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.ts",
+  resolve: {
+    extensions: [".js", ".ts"],
+  },
   output: {
     filename: "script.js",
     path: path.resolve(__dirname, "dist"),
@@ -18,7 +21,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.m?ts$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
