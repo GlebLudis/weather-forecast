@@ -20,10 +20,11 @@ async function renderWeather() {
   const li = document.createElement("li");
   li.classList.add("city");
   const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+  const imageMap = `https://open.mapquestapi.com/staticmap/v5/map?key=${API_KEY}&center=${name}&size400,400px=@2x`;
 
-  document.querySelector(".map").innerHTML = `<img 
-        src=https://open.mapquestapi.com/staticmap/v5/map?key=${API_KEY}&center=${name}&size400,400px=@2x
-        width="200" height="200">`;
+  document.querySelector(
+    ".map"
+  ).innerHTML = `<img src=${imageMap} width="200" height="200">`;
 
   document.querySelector(".weather-form").innerHTML = `
          <h2 class="city-name" data-name="${name}">
@@ -35,31 +36,14 @@ async function renderWeather() {
         </div>
         `;
 
-  const oldData = localStorage.getItem("Cities");
-  const parseData = JSON.parse(oldData);
-  if (parseData.length > 9) {
-    parseData.splice(0, 1);
-  }
-
-  const newCity = JSON.stringify(name);
-  const newStrCity = newCity.split('"').join("");
-
-  const compare = parseData.includes(newStrCity);
-  if (compare === true) {
-    console.error("Ok");
-  } else if (compare === false) {
-    parseData.push(newStrCity);
-    localStorage.setItem("Cities", JSON.stringify(parseData));
-  }
-
-  let str = "";
-
-  parseData.forEach((cities) => {
-    str += `<option value="${cities}" />`;
-  });
-
-  const dataList = document.getElementById("data-list");
-  dataList.innerHTML = str;
+  const newData = {
+    city: data.name,
+    temp: data.main.temp,
+    des: data.weather[0].description,
+    imgMap: imageMap,
+    icn: icon,
+  };
+  localStorage.setItem(`${name}`, JSON.stringify(newData));
 
   form.reset();
   input.focus();

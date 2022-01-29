@@ -1,0 +1,35 @@
+body {
+  font-size: 80%;
+}
+
+header {
+  padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+
+container {
+  background: white;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+container div {
+  background: black;
+  color: white;
+  padding: 15px;
+  max-width: 125px;
+  margin: 5px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}

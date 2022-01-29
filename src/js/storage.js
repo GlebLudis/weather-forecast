@@ -1,25 +1,24 @@
 import getWeather from "./getWeather.js";
+// eslint-disable-next-line import/extensions
+import { API_KEY } from "./keys";
 
 async function storage() {
   const data = await getWeather();
-  const { name } = data;
-  const checkData = localStorage.getItem("Cities");
-  if (checkData == null) {
-    const newData = [];
-    const cityStr = JSON.stringify(name);
-    const newCity = cityStr.split('"').join("");
-    newData.push(newCity);
-    localStorage.setItem("Cities", JSON.stringify(newData));
+  const { name, weather } = data;
+  const checkData = localStorage.length;
+  const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+  const imageMap = `https://open.mapquestapi.com/staticmap/v5/map?key=${API_KEY}&center=${name}&size400,400px=@2x`;
+  if (checkData === 0) {
+    const newData = {
+      city: data.name,
+      temp: data.main.temp,
+      des: data.weather[0].description,
+      imgMap: imageMap,
+      icn: icon,
+    };
+    localStorage.setItem(`${name}`, JSON.stringify(newData));
   } else {
-    let str = "";
-    const oldData = localStorage.getItem("Cities");
-    const parseData = JSON.parse(oldData);
-    parseData.forEach((cities) => {
-      str += `<option value="${cities}" />`;
-
-      const dataList = document.getElementById("data-list");
-      dataList.innerHTML = str;
-    });
+    console.log("ok");
   }
 }
 

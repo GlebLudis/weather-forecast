@@ -21,8 +21,6 @@ async function firstRequest() {
           <figcaption>${weather[0].description}</figcaption>
         </div>
         `;
-  document.querySelector(".map").appendChild(map);
-  document.querySelector(".weather-form").appendChild(weatherForm);
 }
 
 export default firstRequest;
